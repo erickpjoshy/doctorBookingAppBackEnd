@@ -5,6 +5,7 @@ const prescriptionSchema = Schema(
     doctor: { type: Schema.Types.ObjectId, ref: 'Doctor' },
     user: { type: Schema.Types.ObjectId, ref: 'User' },
     message: String,
+    appointment: { type: Schema.Types.ObjectId, ref: 'Appointment' },
     medcines: [{ type: Schema.Types.ObjectId, ref: 'Medcine' }],
   },
   { timestamps: true }

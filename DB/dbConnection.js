@@ -1,7 +1,9 @@
 import mongoose from 'mongoose';
 
 mongoose
-  .connect('mongodb://localhost:27017/DoctorDB')
+  .connect(
+    'mongodb+srv://erickpjoshy:lYnrLTMeBWAdlUwL@mebdoctortechdoctorbook.sx8coua.mongodb.net/?retryWrites=true&w=majority&appName=MebDoctorTechDoctorBookingApp'
+  )
   .then(() => {
     console.log('DB Connected');
   })
