@@ -23,6 +23,10 @@ const corsOptions = {
 
 app.use(cors(corsOptions));
 
+app.get('/', (req, res) => {
+  res.status(200).json('Service started');
+});
+
 //malewares
 app.use(express.json());
 
@@ -33,10 +37,8 @@ app.set('view engine', 'ejs');
 app.use('*', (req, res) => {
   console.log('invalid link');
 });
-app.get('/', (req, res) => {
-  res.status(200).json('Service started');
-});
 
-app.listen(process.env.PORT || 4444, () => {
+const PORT = process.env.PORT || 4444;
+app.listen(PORT, () => {
   console.log('app is running @ http://localhost:4444/');
 });
