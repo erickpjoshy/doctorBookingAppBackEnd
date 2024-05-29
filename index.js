@@ -41,3 +41,5 @@ app.get('/', (req, res) => {
 app.listen(process.env.PORT, () => {
   console.log('app is running @ http://localhost:4444/');
 });
+
+module.exports = app;
