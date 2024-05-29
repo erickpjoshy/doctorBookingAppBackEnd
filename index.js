@@ -37,6 +37,6 @@ app.get('/', (req, res) => {
   res.status(200).json('Service started');
 });
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT || 4444, () => {
   console.log('app is running @ http://localhost:4444/');
 });
