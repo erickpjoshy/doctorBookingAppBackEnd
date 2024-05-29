@@ -8,21 +8,20 @@ dotenv.config();
 const app = express();
 
 // CORS middleware setup
-const allowedOrigins = ['http://localhost:5174', 'http://127.0.0.1:5174'];
+// const allowedOrigins = ['http://localhost:5174', 'http://127.0.0.1:5174'];
 
-const corsOptions = {
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  },
-  credentials: true,
-};
+// const corsOptions = {
+//   origin: function (origin, callback) {
+//     if (!origin || allowedOrigins.includes(origin)) {
+//       callback(null, true);
+//     } else {
+//       callback(new Error('Not allowed by CORS'));
+//     }
+//   },
+//   credentials: true,
+// };
 
-app.use(cors(corsOptions));
-app.options('*', cors(corsOptions));
+app.use(cors());
 
 //malewares
 app.use(express.json());
@@ -34,10 +33,10 @@ app.set('view engine', 'ejs');
 app.use('*', (req, res) => {
   console.log('invalid link');
 });
-app.get('/', (req, res) => {
-  res.status(200).json('Service started');
-});
+// app.get('/', (req, res) => {
+//   res.status(200).json('Service started');
+// });
 
-app.listen(process.env.PORT, () => {
+app.listen(process.env.PORT || 4444, () => {
   console.log('app is running @ http://localhost:4444/');
 });
