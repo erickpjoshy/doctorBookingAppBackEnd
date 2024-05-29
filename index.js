@@ -5,10 +5,15 @@ import routes from './routes/index.js';
 import dotenv from 'dotenv';
 import ejs from 'ejs';
 dotenv.config();
+
 const app = express();
 
 // CORS middleware setup
-const allowedOrigins = ['http://localhost:5174', 'http://127.0.0.1:5174'];
+const allowedOrigins = [
+  'http://localhost:5174',
+  'http://127.0.0.1:5174',
+  'https://doctorbookingapp.erickpjoshy.cloud',
+];
 
 const corsOptions = {
   origin: function (origin, callback) {
@@ -27,18 +32,20 @@ app.get('/', (req, res) => {
   res.status(200).json('Service started');
 });
 
-//malewares
+// middlewares
 app.use(express.json());
 
 app.use(routes);
 app.use(express.static('uploads'));
 app.set('view engine', 'ejs');
 
+// Catch-all for invalid routes
 app.use('*', (req, res) => {
   console.log('invalid link');
+  res.status(404).send('Invalid link');
 });
 
 const PORT = process.env.PORT || 4444;
 app.listen(PORT, () => {
-  console.log('app is running @ http://localhost:4444/');
+  console.log(`app is running @ http://localhost:${PORT}/`);
 });
