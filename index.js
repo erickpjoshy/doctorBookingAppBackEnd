@@ -33,9 +33,9 @@ app.set('view engine', 'ejs');
 app.use('*', (req, res) => {
   console.log('invalid link');
 });
-// app.get('/', (req, res) => {
-//   res.status(200).json('Service started');
-// });
+app.get('/', (req, res) => {
+  res.status(200).json('Service started');
+});
 
 app.listen(process.env.PORT, () => {
   console.log('app is running @ http://localhost:4444/');
