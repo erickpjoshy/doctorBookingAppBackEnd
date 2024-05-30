@@ -27,11 +27,7 @@ router.get('/getDepartment', async (req, res) => {
 });
 router.get('/getdepartmentnofilter', async (req, res) => {
   try {
-    const page = parseInt(req.query.page) || 1;
-    const pageSize = parseInt(req.query.pageSize) || 4;
-    const departments = await Department.find()
-      .skip((page - 1) * pageSize)
-      .limit(pageSize);
+    const departments = await Department.find();
     res.status(200).json(departments);
   } catch (e) {
     res.status(500).json(e);
