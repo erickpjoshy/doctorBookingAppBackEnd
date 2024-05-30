@@ -16,11 +16,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 router.post('/image', upload.single('file'), (req, res) => {
-  res
-    .status(201)
-    .json({
-      url: `https://doctorbookingbackendapp.erickpjoshy.cloud/${req.file.filename}`,
-    });
+  res.status(201).json({ url: `http://localhost:4444/${req.file.filename}` });
 });
 
 router.post('/delete', async (req, res) => {
